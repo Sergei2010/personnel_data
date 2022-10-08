@@ -19,6 +19,7 @@
   height: 52px;
   display: flex;
   align-items: center;
+  margin-bottom: 14px;
 }
 
 .search-content {
@@ -57,6 +58,8 @@
 .nav {
   width: 100%;
   height: 36px;
+  display: flex;
+  align-items: center;
 }
 
 .nav ul {
@@ -71,29 +74,37 @@
   font-weight: 600;
   font-size: 15px;
   text-align: center;
-  color: $black;
+}
+
+.nav ul li div a {
+  text-decoration: none;
 }
 
 .nav ul li div {
+  height: 36px;
   line-height: 36px;
+  background: no-repeat 0 100%;
+  background-image: linear-gradient($underline, $underline);
+  background-size: 0% 2px;
+  transition: background-size 0.3s ease;
+}
+
+.nav ul li div a p {
   padding-left: 8px;
   padding-right: 8px;
 }
 
-.nav ul li div a {
-  cursor: pointer;
+.nav ul li:first-child div {
+  background-size: 100% 2px;
 }
 
-.nav ul li a div[hover] {
-  border-bottom: 2px solid rgba(101, 52, 255, 1);
+.nav ul li div:hover,
+div:focus {
+  background-size: 100% 2px;
 }
 
-.nav a:hover div {
-  border-bottom: 2px solid rgba(101, 52, 255, 1);
-
-  .first-link {
-    border-bottom: 2px solid red;
-  }
+.underline-free {
+  background-size: 0% 2px;
 }
 
 .spacing-down {
