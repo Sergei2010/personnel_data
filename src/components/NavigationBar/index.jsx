@@ -1,5 +1,7 @@
 import React from 'react';
 import searchIcon from '../../assets/Vector.svg';
+import listIcon from '../../assets/list-ui-alt.svg';
+
 
 const NavigationBar = () => {
   const links = [
@@ -31,15 +33,18 @@ const NavigationBar = () => {
   };
 
   return (
-    <>
+    <div className='wrapper'>
       <div className="spacing-up"></div>
       <div className="title">Поиск</div>
       <div className="search">
-        <div className="search-content">
+        <div className="search-content-left">
           <p>
             <img src={ searchIcon } alt="Search" />
           </p>
           <input type="text" placeholder="Введите имя, тег, почту ..." />
+        </div>
+        <div className="search-content-right">
+          <img src={ listIcon } alt="ListIcon" />
         </div>
       </div>
       <nav className="nav">
@@ -62,7 +67,7 @@ const NavigationBar = () => {
         </ul>
       </nav>
       <div className="spacing-down"></div>
-    </>
+    </div>
   );
 };
 
