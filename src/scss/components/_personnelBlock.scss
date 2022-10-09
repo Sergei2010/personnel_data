@@ -1,0 +1,21 @@
+@import '../variables';
+
+.personnel-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 12px;
+}
+
+.personnel-block-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px 16px;
+  gap: 2px;
+  width: 1280px;
+  height: 84px;
+}
