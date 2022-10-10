@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 0px;
+  padding: 16px;
   gap: 12px;
 }
 
@@ -14,8 +14,55 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 0px 16px;
   gap: 2px;
-  width: 1280px;
   height: 84px;
+}
+
+.personnel-block-item-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.personnel-block-item-card > p {
+  width: 72px;
+  height: 72px;
+  border: 0;
+  border-radius: 50%;
+  background-image: url('https://api.lorem.space/image/face?w=120&h=120');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.personnel-block-item-card div {
+  padding-left: 16px;
+}
+
+.personnel-block-item-card div p:nth-child(1) span:nth-child(1) {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: $black;
+}
+
+.personnel-block-item-card div p:nth-child(1) span:nth-child(2) {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: $grey;
+  padding-left: 4px;
+}
+
+.personnel-block-item-card div p:nth-child(2) span {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #55555c;
 }
