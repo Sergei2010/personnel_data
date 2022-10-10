@@ -4,20 +4,19 @@
 @import './components/all.scss';
 
 body {
-  background-color: $background;
+  background-color: #f3f2f2;
+  padding-top: 16px;
 }
 
 .wrapper {
-  width: calc(100vw - 100px);
+  width: 1248px;
   height: 100%;
   background-color: $background;
-  margin: 16px auto;
-  border-radius: 10px;
+  margin: 0 auto;
+  border-radius: 2px;
   max-width: 1400px;
 
   @media (max-width: 645px) {
     width: calc(100vw - 30px);
-    margin-top: 16px;
-    margin-bottom: 16px;
   }
 }
