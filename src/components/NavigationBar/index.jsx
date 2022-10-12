@@ -1,4 +1,7 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { setDepartment } from '../../redux/sleces/filterSlice';
+
 import searchIcon from '../../assets/Vector.svg';
 import listIcon from '../../assets/list-ui-alt.svg';
 
@@ -12,6 +15,13 @@ const NavigationBar = () => {
     { id: 5, title: 'iOS' },
     { id: 6, title: 'Android' },
   ];
+  //const department = useSelector((state) => state.filter.department);
+  const dispatch = useDispatch();
+
+  const onChangeDepartment = (e) => {
+    e.preventDefault();
+    dispatch(setDepartment(e.target.textContent));
+  };
 
   const el = () => document.querySelector('ul > li:first-child div');
 
@@ -26,6 +36,7 @@ const NavigationBar = () => {
   };
 
   const handlePointerOut = (e) => {
+    e.preventDefault();
     let res = el();
     if (res && e.target.innerText !== links[0].title) {
       res.style.backgroundSize = '100% 2px';
@@ -55,10 +66,13 @@ const NavigationBar = () => {
                 key={ link.id }
                 onPointerOver={ handlePointerOver }
                 onPointerOut={ handlePointerOut }
+                onClick={ onChangeDepartment }
               >
                 <div>
                   <a href="/">
-                    <p>{ link.title }</p>
+                    <p>
+                      { link.title }
+                    </p>
                   </a>
                 </div>
               </li>
