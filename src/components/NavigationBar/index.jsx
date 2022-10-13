@@ -3,26 +3,18 @@ import { useDispatch } from 'react-redux';
 import { setDepartment } from '../../redux/sleces/filterSlice';
 
 import { departamentLinksModified, returnKey } from '../../utils/variables';
-
-import searchIcon from '../../assets/Vector.svg';
-import listIcon from '../../assets/list-ui-alt.svg';
+import SearchBlock from '../../components/SearchBlock';
 
 
 const NavigationBar = () => {
 
-  //console.log('departamentLinks: ', departamentLinks);
-  //console.log('departamentLinksModified: ', departamentLinksModified);
-  //console.log('departaments: ', departaments);
-
-  //const departament = useSelector((state) => state.filter.department);
-  //console.log('departament: ', departament);
   const dispatch = useDispatch();
 
 
 
   const onChangeDepartment = (e) => {
     e.preventDefault();
-    //console.log('e.target.textContent: ', e.target.textContent);
+
     let str = e.target.textContent;
     dispatch(setDepartment(returnKey(str)));
   };
@@ -51,17 +43,7 @@ const NavigationBar = () => {
     <div className='wrapper'>
       <div className="spacing-up"></div>
       <div className="title">Поиск</div>
-      <div className="search">
-        <div className="search-content-left">
-          <p>
-            <img src={ searchIcon } alt="Search" />
-          </p>
-          <input type="text" placeholder="Введите имя, тег, почту ..." />
-        </div>
-        <div className="search-content-right">
-          <img src={ listIcon } alt="ListIcon" />
-        </div>
-      </div>
+      <SearchBlock />
       <nav className="nav">
         <ul>
           { departamentLinksModified.map((link, index) => {
