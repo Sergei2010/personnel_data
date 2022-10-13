@@ -23,7 +23,7 @@ export const departaments = {
 	{ id: 6, title: 'Android' },
 ]; */
 
-const departmentLinks = (Object.values(departaments))
+const departamentLinks = (Object.values(departaments))
 	.filter(item => {
 		return (
 			item === 'Всё'
@@ -35,7 +35,7 @@ const departmentLinks = (Object.values(departaments))
 		);
 	});
 
-export const departmentLinksModified = departmentLinks
+export const departamentLinksModified = departamentLinks
 	.map((item, array) => {
 		if (item === 'Всё') {
 			return 'Всё';
@@ -58,5 +58,15 @@ export const departmentLinksModified = departmentLinks
 		return array;
 	});
 
-departmentLinksModified
+departamentLinksModified
 	.splice(1, 5, 'Designers', 'Analysts', 'Managers', 'iOS', 'Android');
+
+export const returnKey = (str) => {
+	if (str === 'Всё') return 'all';
+	else if (str === 'Android') return 'android';
+	else if (str === 'iOS') return 'ios';
+	else if (str === 'Designers') return 'design';
+	else if (str === 'Managers') return 'management';
+	else if (str === 'Analysts') return 'analytics';
+	else console.log('Bad string');
+};
