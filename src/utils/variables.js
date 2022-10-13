@@ -1,5 +1,5 @@
 export const departaments = {
-	all: 'все',
+	all: 'Всё',
 	android: 'Android',
 	ios: 'iOS',
 	design: 'Дизайн',
@@ -13,3 +13,50 @@ export const departaments = {
 	support: 'Техподдержка',
 	analytics: 'Аналитика',
 };
+
+/* export const links = [
+	{ id: 1, title: 'Всё' },
+	{ id: 2, title: 'Designers' },
+	{ id: 3, title: 'Analysts' },
+	{ id: 4, title: 'Managers' },
+	{ id: 5, title: 'iOS' },
+	{ id: 6, title: 'Android' },
+]; */
+
+const departmentLinks = (Object.values(departaments))
+	.filter(item => {
+		return (
+			item === 'Всё'
+			|| item === 'Дизайн'
+			|| item === 'Аналитика'
+			|| item === 'Менеджмент'
+			|| item === 'iOS'
+			|| item === 'Android'
+		);
+	});
+
+export const departmentLinksModified = departmentLinks
+	.map((item, array) => {
+		if (item === 'Всё') {
+			return 'Всё';
+		}
+		else if (item === 'Дизайн') {
+			return 'Designers';
+		}
+		else if (item === 'Аналитика') {
+			return 'Analysts';
+		}
+		else if (item === 'Менеджмент') {
+			return 'Managers';
+		}
+		else if (item === 'iOS') {
+			return 'iOS';
+		}
+		else if (item === 'Android') {
+			return 'Android';
+		}
+		return array;
+	});
+
+departmentLinksModified
+	.splice(1, 5, 'Designers', 'Analysts', 'Managers', 'iOS', 'Android');
