@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setDepartment } from '../../redux/sleces/filterSlice';
 
-import { departmentLinksModified } from '../../utils/variables';
+import { departamentLinksModified, returnKey } from '../../utils/variables';
 
 import searchIcon from '../../assets/Vector.svg';
 import listIcon from '../../assets/list-ui-alt.svg';
@@ -10,26 +10,31 @@ import listIcon from '../../assets/list-ui-alt.svg';
 
 const NavigationBar = () => {
 
-  //console.log('links: ', links);
-  //console.log('departmentLinks: ', departmentLinks);
-  //console.log('departmentLinksModified: ', departmentLinksModified);
+  //console.log('departamentLinks: ', departamentLinks);
+  //console.log('departamentLinksModified: ', departamentLinksModified);
+  //console.log('departaments: ', departaments);
 
-  //const department = useSelector((state) => state.filter.department);
+  //const departament = useSelector((state) => state.filter.department);
+  //console.log('departament: ', departament);
   const dispatch = useDispatch();
+
+
 
   const onChangeDepartment = (e) => {
     e.preventDefault();
-    dispatch(setDepartment(e.target.textContent));
+    //console.log('e.target.textContent: ', e.target.textContent);
+    let str = e.target.textContent;
+    dispatch(setDepartment(returnKey(str)));
   };
 
   const el = () => document.querySelector('ul > li:first-child div');
 
   const handlePointerOver = (e) => {
     let res = el();
-    if (res && e.target.innerText !== departmentLinksModified[0].title) {
+    if (res && e.target.innerText !== departamentLinksModified[0].title) {
       res.style.backgroundSize = '0% 2px';
     }
-    else if (e.target.innerText === departmentLinksModified[0].title) {
+    else if (e.target.innerText === departamentLinksModified[0].title) {
       res.style.backgroundSize = '100% 2px';
     }
   };
@@ -37,7 +42,7 @@ const NavigationBar = () => {
   const handlePointerOut = (e) => {
     e.preventDefault();
     let res = el();
-    if (res && e.target.innerText !== departmentLinksModified[0].title) {
+    if (res && e.target.innerText !== departamentLinksModified[0].title) {
       res.style.backgroundSize = '100% 2px';
     }
   };
@@ -59,7 +64,7 @@ const NavigationBar = () => {
       </div>
       <nav className="nav">
         <ul>
-          { departmentLinksModified.map((link, index) => {
+          { departamentLinksModified.map((link, index) => {
             return (
               <li
                 key={ index }
