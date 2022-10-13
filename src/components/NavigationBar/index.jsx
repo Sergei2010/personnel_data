@@ -2,19 +2,18 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setDepartment } from '../../redux/sleces/filterSlice';
 
+import { departmentLinksModified } from '../../utils/variables';
+
 import searchIcon from '../../assets/Vector.svg';
 import listIcon from '../../assets/list-ui-alt.svg';
 
 
 const NavigationBar = () => {
-  const links = [
-    { id: 1, title: 'Всё' },
-    { id: 2, title: 'Designers' },
-    { id: 3, title: 'Analysts' },
-    { id: 4, title: 'Managers' },
-    { id: 5, title: 'iOS' },
-    { id: 6, title: 'Android' },
-  ];
+
+  //console.log('links: ', links);
+  //console.log('departmentLinks: ', departmentLinks);
+  //console.log('departmentLinksModified: ', departmentLinksModified);
+
   //const department = useSelector((state) => state.filter.department);
   const dispatch = useDispatch();
 
@@ -27,10 +26,10 @@ const NavigationBar = () => {
 
   const handlePointerOver = (e) => {
     let res = el();
-    if (res && e.target.innerText !== links[0].title) {
+    if (res && e.target.innerText !== departmentLinksModified[0].title) {
       res.style.backgroundSize = '0% 2px';
     }
-    else if (e.target.innerText === links[0].title) {
+    else if (e.target.innerText === departmentLinksModified[0].title) {
       res.style.backgroundSize = '100% 2px';
     }
   };
@@ -38,7 +37,7 @@ const NavigationBar = () => {
   const handlePointerOut = (e) => {
     e.preventDefault();
     let res = el();
-    if (res && e.target.innerText !== links[0].title) {
+    if (res && e.target.innerText !== departmentLinksModified[0].title) {
       res.style.backgroundSize = '100% 2px';
     }
   };
@@ -60,10 +59,10 @@ const NavigationBar = () => {
       </div>
       <nav className="nav">
         <ul>
-          { links.map((link) => {
+          { departmentLinksModified.map((link, index) => {
             return (
               <li
-                key={ link.id }
+                key={ index }
                 onPointerOver={ handlePointerOver }
                 onPointerOut={ handlePointerOut }
                 onClick={ onChangeDepartment }
@@ -71,7 +70,7 @@ const NavigationBar = () => {
                 <div>
                   <a href="/">
                     <p>
-                      { link.title }
+                      { link }
                     </p>
                   </a>
                 </div>
