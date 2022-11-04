@@ -1,0 +1,128 @@
+fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px 16px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #ffffff;
+  border-radius: 20px;
+}
+
+legend {
+  float: left;
+  position: relative;
+  //display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  //display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  //display: flex;
+  //-webkit-justify-content: space-around;
+  justify-content: space-between;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: $black;
+  width: 327px;
+  height: 24px;
+  margin-bottom: 16px;
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
+legend p:nth-child(1) {
+  width: 46px;
+  height: 20px;
+}
+
+legend p:nth-child(2) {
+  width: 122px;
+  height: 24px;
+}
+
+legend p:nth-child(3) {
+  width: 46px;
+  height: 20px;
+  text-align: right;
+  cursor: pointer;
+}
+
+.visuallyhidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+fieldset li {
+  width: 341px;
+  height: 60px;
+  line-height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+/* fieldset input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+} */
+
+fieldset label {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  align-items: flex-end;
+  color: $black;
+}
+
+fieldset li {
+  padding-left: 36px;
+  //cursor: pointer;
+}
+
+.radio__box {
+  position: absolute;
+  width: 36px;
+  height: 48px;
+  background-image: url('../../assets/input.svg');
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 20px 20px;
+  margin-left: -36px;
+}
+
+.radio__input:checked + .radio__box {
+  background-image: url('../../assets/input-active.svg');
+}
+
+.radio__input + .radio__box {
+  cursor: pointer;
+}
+
+label {
+  cursor: pointer;
+}

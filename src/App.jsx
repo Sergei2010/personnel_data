@@ -1,14 +1,20 @@
 import React from 'react';
 import NavigationBar from './components/NavigationBar';
-import PersonnelBlock from './components/PersonnelBlock';
+import PersonnelsBlock from './components/PersonnelsBlock';
+import Modal from './components/Modal';
+import Sort from './components/Sort';
 
 import './scss/app.scss';
 
 function App() {
+
   return (
     <>
+      <Modal>
+        <Sort />
+      </Modal>
       <NavigationBar />
-      <PersonnelBlock />
+      <PersonnelsBlock />
     </>
   );
 }
