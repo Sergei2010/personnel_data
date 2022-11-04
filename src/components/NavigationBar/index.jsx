@@ -1,65 +1,74 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { setDepartment } from '../../redux/sleces/filterSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { setdepartment } from '../../redux/slices/filterSlice';
+import { Link } from 'react-router-dom';
 
-import { departamentLinksModified, returnKey } from '../../utils/variables';
+import { departmentLinksModified, returnKey, returnLink } from '../../utils/variables';
 import SearchBlock from '../../components/SearchBlock';
 
 
 const NavigationBar = () => {
 
+  let str = useSelector(state => state.filter.department);
   const dispatch = useDispatch();
 
+  str = returnLink(str);
 
+  const [activeIdMouseInter, setActiveIdMouseInter] = React.useState(str);
+  React.useEffect(() => {
+    setActiveIdMouseInter(str);
+  }, [str]);
+  const [activeIdClick, setActiveIdClick] = React.useState('');
+  const [clickEvent, setClickEvent] = React.useState(false);
 
-  const onChangeDepartment = (e) => {
+  const handleMouseEnter = (e) => {
     e.preventDefault();
-
-    let str = e.target.textContent;
-    dispatch(setDepartment(returnKey(str)));
-  };
-
-  const el = () => document.querySelector('ul > li:first-child div');
-
-  const handlePointerOver = (e) => {
-    let res = el();
-    if (res && e.target.innerText !== departamentLinksModified[0].title) {
-      res.style.backgroundSize = '0% 2px';
-    }
-    else if (e.target.innerText === departamentLinksModified[0].title) {
-      res.style.backgroundSize = '100% 2px';
+    if (!clickEvent && e.target.nodeName === 'DIV' && e.target.id !== activeIdMouseInter) {
+      setActiveIdMouseInter(e.target.id);
     }
   };
 
-  const handlePointerOut = (e) => {
+  const handleMouseLeave = (e) => {
     e.preventDefault();
-    let res = el();
-    if (res && e.target.innerText !== departamentLinksModified[0].title) {
-      res.style.backgroundSize = '100% 2px';
+    if (!clickEvent && activeIdMouseInter !== 'Всё') {
+      setActiveIdMouseInter('Всё');
     }
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setClickEvent(true);
+    setActiveIdMouseInter('');
+    let link = e.target.textContent;
+    setActiveIdClick(link);
+    let str = returnKey(link);
+    dispatch(setdepartment(str));
   };
 
   return (
     <div className='wrapper'>
+
       <div className="spacing-up"></div>
       <div className="title">Поиск</div>
+
       <SearchBlock />
+
       <nav className="nav">
         <ul>
-          { departamentLinksModified.map((link, index) => {
+          { departmentLinksModified.map((link) => {
             return (
-              <li
-                key={ index }
-                onPointerOver={ handlePointerOver }
-                onPointerOut={ handlePointerOut }
-                onClick={ onChangeDepartment }
-              >
-                <div>
-                  <a href="/">
-                    <p>
-                      { link }
-                    </p>
-                  </a>
+              <li key={ link }>
+                <div
+                  id={ link }
+                  className={ `nav-div ${(activeIdMouseInter === link || activeIdClick === link) ? "nav-div-active" : ""}` }
+                  onMouseEnter={ handleMouseEnter }
+                  onMouseLeave={ handleMouseLeave }
+                >
+                  <Link
+                    to="/"
+                    onClick={ handleClick }
+                  >{ link }
+                  </Link>
                 </div>
               </li>
             );

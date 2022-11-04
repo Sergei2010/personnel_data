@@ -1,4 +1,4 @@
-export const departaments = {
+export const departments = {
 	all: 'Всё',
 	android: 'Android',
 	ios: 'iOS',
@@ -14,16 +14,7 @@ export const departaments = {
 	analytics: 'Аналитика',
 };
 
-/* export const links = [
-	{ id: 1, title: 'Всё' },
-	{ id: 2, title: 'Designers' },
-	{ id: 3, title: 'Analysts' },
-	{ id: 4, title: 'Managers' },
-	{ id: 5, title: 'iOS' },
-	{ id: 6, title: 'Android' },
-]; */
-
-const departamentLinks = (Object.values(departaments))
+const departmentLinks = (Object.values(departments))
 	.filter(item => {
 		return (
 			item === 'Всё'
@@ -35,7 +26,7 @@ const departamentLinks = (Object.values(departaments))
 		);
 	});
 
-export const departamentLinksModified = departamentLinks
+export const departmentLinksModified = departmentLinks
 	.map((item, array) => {
 		if (item === 'Всё') {
 			return 'Всё';
@@ -58,7 +49,7 @@ export const departamentLinksModified = departamentLinks
 		return array;
 	});
 
-departamentLinksModified
+departmentLinksModified
 	.splice(1, 5, 'Designers', 'Analysts', 'Managers', 'iOS', 'Android');
 
 export const returnKey = (str) => {
@@ -70,3 +61,37 @@ export const returnKey = (str) => {
 	else if (str === 'Analysts') return 'analytics';
 	else console.log('Bad string');
 };
+
+export const returnLink = (str) => {
+	if (str === 'all') return 'Всё';
+	else if (str === 'android') return 'Android';
+	else if (str === 'ios') return 'iOS';
+	else if (str === 'design') return 'Designers';
+	else if (str === 'management') return 'Managers';
+	else if (str === 'analytics') return 'Analysts';
+	else console.log('Bad string');
+};
+
+export const arrForHash = [
+	'8B7BCDC2',
+	'225E6693',
+	'500B67FB',
+	'A89D0DE6',
+	'9D9539E7',
+	'BDC01094',
+	'7F5AE56A',
+	'4F32C4CF',
+	'B0E33EF4',
+	'2D297A22',
+];
+
+export const str = 'https://api.lorem.space/image/face?w=120&h=120&hash=';
+
+export function getRandomArbitrary(min, max) {
+	return Math.floor(Math.random() * (max - min) + min);
+}
+
+export const sortList = [
+	{ name: 'По алфавиту', sortProperty: 'lastName' },
+	{ name: 'По дню рождения', sortProperty: 'birthday' },
+];

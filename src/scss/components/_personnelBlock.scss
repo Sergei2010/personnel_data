@@ -24,15 +24,16 @@
   margin-bottom: 12px;
 }
 
-.personnel-block-item-card > p {
+.personnel-block-item-card figure {
   width: 72px;
   height: 72px;
-  border: 0;
+}
+
+.personnel-block-item-card figure img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
-  background-image: url('https://api.lorem.space/image/face?w=120&h=120');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
 }
 
 .personnel-block-item-card div {
