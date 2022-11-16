@@ -1,26 +1,21 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { setpersonnels } from '../../redux/slices/personnelsSlice';
+import { useSelector } from 'react-redux';
 import qs from 'qs';
 import { useNavigate } from 'react-router-dom';
-import moment from 'moment';
+
+import { useGetPersonnelsQuery } from '../../redux/API/personnelsApi';
 import Skeleton from './Skeleton';
 import Personnels from '../Personnels';
 import CriticalError from '../СriticalЕrror';
-import personnelsAPI from '../../utils/personnelsAPI';
-import { sortList } from '../../utils/variables';
 
 const PersonnelsBlock = () => {
-
+	const { isLoading, isError } = useGetPersonnelsQuery();
 	const navigate = useNavigate();
 	const department = useSelector(state => state.filter.department);
 	const code = useSelector(state => state.code.code);
-	//const personnels = useSelector(state => state.personnels.personnels);
-	const sort = useSelector(state => state.filter.sort);
-	const dispatch = useDispatch();
-	const [loading, setLoading] = React.useState(true);
+	//const { status, error } = useSelector(state => state.personnels);
 
-	React.useEffect(() => {
+	/* React.useEffect(() => {
 
 		setLoading(true);
 
@@ -54,7 +49,7 @@ const PersonnelsBlock = () => {
 					console.log('anything else:', err.request);
 				}
 			});
-	}, [department, dispatch, code, sort]);
+	}, [department, dispatch, code, sort]); */
 
 	React.useEffect(() => {
 		const queryString = qs.stringify({
@@ -66,20 +61,16 @@ const PersonnelsBlock = () => {
 		navigate(`?${queryString}`);
 	}, [department, /* sort, searchValue, */ navigate]);
 
-	//const personnels = useSelector(state => state.personnels.personnels);
-	//console.log('personnels:', personnels);
-
 	return (
 		<div className="wrapper">
 			<div className="personnel-block">
-				{ !code && loading ? ([...new Array(3)].map((item, index) => {
+				{ !code && isLoading && ([...new Array(3)].map((item, index) => {
 					return (
 						<Skeleton key={ index } />
 					);
-				})) :
-					<Personnels />
-				}
-				{ code && <CriticalError /> }
+				})) }
+				{ !code && !isLoading && <Personnels /> }
+				{ (code || isError) && <CriticalError /> }
 			</div>
 		</div>
 	);

@@ -1,49 +1,26 @@
-/* import { configureStore } from '@reduxjs/toolkit';
-import filter from './slices/filterSlice';
-import personnels from './slices/personnelsSlice';
-import code from './slices/codeSlice';
-import modal from './slices/modalSlice';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
-export const store = configureStore({
-  reducer: {
-    filter,
-    personnels,
-    code,
-    modal,
-  },
-}); */
-
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
-//import userReducer from "./slices/userSlice";
-import storage from 'redux-persist/lib/storage';
-import { persistReducer, persistStore } from 'redux-persist';
-import thunk from 'redux-thunk';
-
-import filter from './slices/filterSlice';
-import personnels from './slices/personnelsSlice';
+import { personnelsApi } from './API/personnelsApi';
+import filter from '../store/reducers/FilterSlice';
 import code from './slices/codeSlice';
 import modal from './slices/modalSlice';
 
 const rootReducer = combineReducers({
-  filter,
-  personnels,
-  code,
-  modal,
+	[personnelsApi.reducerPath]: personnelsApi.reducer,
+	filter,
+	code,
+	modal,
 });
 
-const persistConfig = {
-  key: 'root',
-  version: 1,
-  storage,
-  whitelist: ['personnels'],
-};
-
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-
-export const store = configureStore({
-  reducer: persistedReducer,
-  devTools: process.env.NODE_ENV !== 'production',
-  middleware: [thunk]
+export const setupStore = configureStore({
+	reducer: rootReducer,
+	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(personnelsApi.middleware)
 });
 
-export const persistor = persistStore(store);
+// тип состояния
+//export type RootState = ReturnType<typeof rootReducer>;
+// тип Store
+//export type AppStore = ReturnType<typeof setupStore>;
+// тип Dispatch
+//export type AppDispatch = AppStore[ 'dispatch' ]
+

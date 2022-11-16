@@ -9,6 +9,16 @@
   gap: 12px;
 }
 
+.personnel-block ul {
+  width: 100%;
+}
+
+.personnel-block li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .personnel-block-item {
   display: flex;
   flex-direction: column;
@@ -66,4 +76,15 @@
   font-size: 13px;
   line-height: 16px;
   color: #55555c;
+}
+
+.personnel-block-birthday {
+  padding-right: 4px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  text-align: right;
+  color: $black;
 }
