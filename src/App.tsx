@@ -1,5 +1,5 @@
 import React from 'react';
-import PersonnelsContainer from './components/SearchBlock/PersonnelData/PersonnelsContainer';
+import PersonnelsContainer from './components/Personnels/PersonnelsContainer';
 //import PostContainer from './components/PostContainer';
 
 import NavigationBar from './components/NavigationBar';

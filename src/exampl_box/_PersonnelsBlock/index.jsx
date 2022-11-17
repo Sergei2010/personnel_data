@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { useGetPersonnelsQuery } from '../../redux/API/personnelsApi';
 import Skeleton from './Skeleton';
-import Personnels from '../Personnels';
-import CriticalError from '../СriticalЕrror';
+import Personnels from '../_Personnels';
+import CriticalError from '../../components/СriticalЕrror';
 
 const PersonnelsBlock = () => {
 	const { isLoading, isError } = useGetPersonnelsQuery();

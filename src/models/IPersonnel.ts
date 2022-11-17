@@ -8,4 +8,5 @@ export interface IPersonnel {
 	position: string | '';
 	birthday: string | '';
 	phone: string | '';
+	birthdayNext: string | '';
 }

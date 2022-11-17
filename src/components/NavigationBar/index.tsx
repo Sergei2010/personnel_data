@@ -3,7 +3,7 @@ import { useAppSelector, useAppDispatch } from '../../hooks/redux';
 import { setdepartment } from '../../store/reducers/FilterSlice';
 import { Link } from 'react-router-dom';
 
-import { linksData, returnKey, returnLink } from '../../utils/variables';
+import { linksData, returnKey, returnLink } from '../../utils/variables_functions';
 import SearchBlock from '../SearchBlock';
 
 const NavigationBar = () => {

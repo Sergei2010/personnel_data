@@ -41,7 +41,8 @@
       "department": "android",
       "position": "developer",
       "birthday": "1973-01-24",
-      "phone": "+79001234567"
+      "phone": "+79001234567",
+      "birthdayNext": "2023-01-24T01:00:00.000Z"
     },
     {
       "id": "497f6eca-6276-4993-bfeb-53gasfaf08",
@@ -52,7 +53,8 @@
       "department": "ios",
       "position": "IOS developer",
       "birthday": "1992-04-14",
-      "phone": "+79001234512"
+      "phone": "+79001234512",
+      "birthdayNext": "2023-04-14T01:00:00.000Z"
     },
     {
       "id": "497f6eca-6276-4993-bfeb-53cbbbb6fhd",
@@ -63,7 +65,8 @@
       "department": "design",
       "position": "developer",
       "birthday": "2001-09-01",
-      "phone": "+79001234513"
+      "phone": "+79001234513",
+      "birthdayNext": "2023-09-01T01:00:00.000Z"
     },
     {
       "id": "497f6eca-6276-4993-bfeb-53cvfhAs",
@@ -74,7 +77,8 @@
       "department": "management",
       "position": "project manager",
       "birthday": "1993-08-24",
-      "phone": "+79001234514"
+      "phone": "+79001234514",
+      "birthdayNext": "2023-08-24T01:00:00.000Z"
     },
     {
       "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
@@ -85,7 +89,8 @@
       "department": "qa",
       "position": "Team Lead",
       "birthday": "1983-08-05",
-      "phone": "+79001234515"
+      "phone": "+79001234515",
+      "birthdayNext": "2023-08-05T02:00:00.000Z"
     },
     {
       "id": "497f6eca-6276-4993-bfeb-53cbbbba6hjycaejh08",
@@ -96,7 +101,8 @@
       "department": "back_office",
       "position": "Office manager",
       "birthday": "1990-01-22",
-      "phone": "+79001234516"
+      "phone": "+79001234516",
+      "birthdayNext": "2023-01-22T00:00:00.000Z"
     },
     {
       "id": "497f6eca-6276-4993-bfeb-53cbbbba6re3",
@@ -107,7 +113,8 @@
       "department": "frontend",
       "position": "developer",
       "birthday": "1990-01-21",
-      "phone": "+79001234517"
+      "phone": "+79001234517",
+      "birthdayNext": "2023-01-21T00:00:00.000Z"
     },
     {
       "id": "497f6eca-6276-4993-bfeb-53cbbbbssaga6f08",
@@ -118,7 +125,8 @@
       "department": "hr",
       "position": "Team Lead",
       "birthday": "2003-01-24",
-      "phone": "+79001234518"
+      "phone": "+79001234518",
+      "birthdayNext": "2023-01-24T00:00:00.000Z"
     },
     {
       "id": "497f6eca-6276-4993-bfeb-53cbbbba35gs76f08",
@@ -129,7 +137,8 @@
       "department": "pr",
       "position": "writer",
       "birthday": "2003-01-01",
-      "phone": "+79001234519"
+      "phone": "+79001234519",
+      "birthdayNext": "2023-01-01T00:00:00.000Z"
     },
     {
       "id": "497f6eca-6276-4993-bfeb-fjxffgsy4",
@@ -140,7 +149,8 @@
       "department": "backend",
       "position": "string",
       "birthday": "2019-08-24",
-      "phone": "+79001234520"
+      "phone": "+79001234520",
+      "birthdayNext": "2023-08-24T00:00:00.000Z"
     },
     {
       "id": "497f6eca-6276-4993-bfeb-sdg6qdgyj",
@@ -151,7 +161,8 @@
       "department": "support",
       "position": "support manager",
       "birthday": "2019-08-24",
-      "phone": "+79001234521"
+      "phone": "+79001234521",
+      "birthdayNext": "2023-08-24T00:00:00.000Z"
     },
     {
       "id": "497f6eca-6276-4993-bfeb-dddw4yuk3",
@@ -162,7 +173,8 @@
       "department": "analytics",
       "position": "Team Lead",
       "birthday": "2019-11-24",
-      "phone": "+79001234522"
+      "phone": "+79001234522",
+      "birthdayNext": "2022-11-24T00:00:00.000Z"
     }
   ],
   "comments": [],

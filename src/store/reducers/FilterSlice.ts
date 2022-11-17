@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { sortList } from '../../utils/variables';
+import { sortList } from '../../utils/variables_functions';
 import { ISort } from '../../models/ISort';
 
 interface SearchState {

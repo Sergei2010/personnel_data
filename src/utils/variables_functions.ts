@@ -96,3 +96,18 @@ export const sortList = [
 	{ name: 'По алфавиту', sortProperty: 'lastName' },
 	{ name: 'По дню рождения', sortProperty: 'birthday' },
 ];
+
+export function getBirthdayStr ( str: string ) {
+	// объект ДР
+	let date = new Date( str );
+	// объект текущей даты
+	const now = new Date();
+	// меняю в объекте ДР год на текущий
+	date.setFullYear( now.getFullYear() );
+	let diff = now.getTime() - date.getTime();
+	// если разница положительная, добавляю 1 год
+	if ( diff > 0 ) {
+		date.setFullYear( now.getFullYear() + 1 );
+	}
+	return date.toISOString();
+}

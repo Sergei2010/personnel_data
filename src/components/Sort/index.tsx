@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { setModal } from '../../store/reducers/ModalSlice';
 import { setSort } from '../../store/reducers/FilterSlice';
 import cancel from '../../assets/cancel.svg';
-import { sortList } from '../../utils/variables';
+import { sortList } from '../../utils/variables_functions';
 
 const Sort = () => {
   const dispatch = useAppDispatch();
