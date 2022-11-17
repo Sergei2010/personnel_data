@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { IPersonnel } from '../../../models/IPersonnel';
-import { useAppSelector } from '../../../hooks/redux';
+import { IPersonnel } from '../../models/IPersonnel';
+import PersonnelBithday from './PersonnelBithday';
+import { getBirthdayStr } from '../../utils/variables_functions';
 
 interface PersonnelsPersonnelItemProps {
   personnel: IPersonnel;
@@ -10,24 +11,25 @@ interface PersonnelsPersonnelItemProps {
 }
 
 const PersonnelItem: React.FC<PersonnelsPersonnelItemProps> = ({ personnel, remove, update }) => {
+  const date = getBirthdayStr(personnel.birthday);
+  //console.log('date', date);
   const handleRemove = (event: React.MouseEvent) => {
     event.stopPropagation();
     remove(personnel);
   };
-  const handleUpdate = (event: React.MouseEvent) => {
+  /* const handleUpdate = (event: React.MouseEvent) => {
     const lastName = prompt() || '';
     update({ ...personnel, lastName });
-  };
-  // added data with personnel's birthday
-  const sort = useAppSelector((state) => state.filterReducer.sort);
-  const sortProperty = sort.sortProperty;
+  }; */
 
-  /* return (
-    <div onClick={handleUpdate}>
-      {personnel.id}. {personnel.lastName}
-      <button onClick={handleRemove}>Delete</button>
-    </div>
-  ); */
+  // добавляю новое значение для текущего ДР
+  const handleUpdate = (birthdayNext: string) => {
+    update({ ...personnel, birthdayNext });
+  };
+
+  React.useEffect(() => {
+    handleUpdate(date);
+  }, [date]);
 
   return (
     <>
@@ -46,9 +48,7 @@ const PersonnelItem: React.FC<PersonnelsPersonnelItemProps> = ({ personnel, remo
             <p>{personnel.position}</p>
           </div>
         </div>
-        <div className="personnel-block-birthday">
-          {sortProperty === 'birthday' && personnel.birthday}
-        </div>
+        <PersonnelBithday birthday={personnel.birthdayNext} />
       </li>
     </>
   );
