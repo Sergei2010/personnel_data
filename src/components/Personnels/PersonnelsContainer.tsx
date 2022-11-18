@@ -1,18 +1,22 @@
 import React from 'react';
 
 import { IPersonnel } from '../../models/IPersonnel';
+import { useAppSelector } from '../../hooks/redux';
 import { personnelsAPI } from '../../services/PersonnelsService';
 import Skeleton from '../../exampl_box/_PersonnelsBlock/Skeleton';
 import PersonnelItem from './PersonnelItem';
 import CriticalError from '../СriticalЕrror';
+import PersonnellYear from './PersonnellYear';
 
-const PostContainer = () => {
-  const [department, setDepartment] = React.useState('all');
+const PersonnelsContainer = () => {
+  //const [ department, setDepartment ] = React.useState( 'all' );
+  const department = useAppSelector((state) => state.filterReducer.department);
   const {
     data: personnels,
     error,
     isLoading,
   } = personnelsAPI.useFetchAllPersonnelsQuery(department);
+
   const [createPersonnel, { error: createError, isLoading: isCreateLoading }] =
     personnelsAPI.useCreatePersonnelMutation();
   const [deletePersonnel, {}] = personnelsAPI.useDeletePersonnelMutation();
@@ -47,24 +51,8 @@ const PostContainer = () => {
     updatePersonnel(personnel);
   };
 
-  /* return (
-    <div>
-      {isLoading && <h1>Идёт загрузка ...</h1>}
-      {error && <h1>Произошла ошибка при загрузке ...</h1>}
-      <button onClick={handleCreate}>Add new post</button>
-      <ul>
-        {personnels &&
-          personnels.map((personnel: IPersonnel) => (
-            <PersonnelsItem
-              remove={handleRemove}
-              update={handleUpdate}
-              personnel={personnel}
-              key={personnel.id}
-            />
-          ))}
-      </ul>
-    </div>
-  ); */
+  console.log('personnels:', personnels);
+
   return (
     <div className="wrapper">
       <div className="personnel-block">
@@ -78,6 +66,7 @@ const PostContainer = () => {
         {
           /* !code && */ !isLoading && (
             <ul>
+              <PersonnellYear />
               {personnels &&
                 personnels.map((personnel: IPersonnel) => (
                   <PersonnelItem
@@ -95,4 +84,4 @@ const PostContainer = () => {
   );
 };
 
-export default PostContainer;
+export default PersonnelsContainer;

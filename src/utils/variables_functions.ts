@@ -26,7 +26,7 @@ const departmentLinks = ( Object.values( departments ) )
 		);
 	} );
 
-const departmentLinksModified = departmentLinks
+export const departmentLinksModified = departmentLinks
 	.map( ( item: string | undefined, array ) => {
 		if ( item === 'Всё' ) {
 			return 'Всё';
@@ -48,10 +48,6 @@ const departmentLinksModified = departmentLinks
 		}
 		return array;
 	} );
-
-export const linksData = departmentLinksModified
-	.splice( 1, 5, 'Designers', 'Analysts', 'Managers', 'iOS', 'Android' )
-	.filter( ( i ) => typeof i === 'string' );
 
 export const returnKey = ( str: string ) => {
 	if ( str === 'Всё' ) return 'all';

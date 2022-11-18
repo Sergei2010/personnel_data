@@ -3,7 +3,7 @@ import { useAppSelector, useAppDispatch } from '../../hooks/redux';
 import { setdepartment } from '../../store/reducers/FilterSlice';
 import { Link } from 'react-router-dom';
 
-import { linksData, returnKey, returnLink } from '../../utils/variables_functions';
+import { departmentLinksModified, returnKey, returnLink } from '../../utils/variables_functions';
 import SearchBlock from '../SearchBlock';
 
 const NavigationBar = () => {
@@ -56,7 +56,7 @@ const NavigationBar = () => {
 
       <nav className="nav">
         <ul>
-          {linksData.map((link) => {
+          {departmentLinksModified.map((link: string | number) => {
             return (
               <li key={link}>
                 <div

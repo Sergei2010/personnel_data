@@ -4,27 +4,27 @@ import { IPersonnel } from './../models/IPersonnel';
 
 export const personnelsAPI = createApi( {
 	reducerPath: 'personnelsAPI',
+	tagTypes: [ 'Personnels' ],
 	baseQuery: fetchBaseQuery( {
 		baseUrl: 'http://localhost:5000'
 	} ),
-	tagTypes: [ 'Personnel' ],
 	endpoints: ( build ) => ( {
 		fetchAllPersonnels: build.query<IPersonnel[], string>( {
-			query: ( department: string = 'all' ) => ( {
+			query: ( department: string ) => ( {
 				url: '/personnels',
 				params: {
 					_department: department
 				}
 			} ),
-			providesTags: result => [ 'Personnel' ]
+			providesTags: [ 'Personnels' ]
 		} ),
 		createPersonnel: build.mutation<IPersonnel, IPersonnel>( {
 			query: ( personnel ) => ( {
-				url: '/personnels',
+				url: `/personnels/${ personnel.id }`,
 				method: 'POST',
 				body: personnel
 			} ),
-			invalidatesTags: [ 'Personnel' ]
+			invalidatesTags: [ 'Personnels' ]
 		} ),
 		updatePersonnel: build.mutation<IPersonnel, IPersonnel>( {
 			query: ( personnel ) => ( {
@@ -32,14 +32,14 @@ export const personnelsAPI = createApi( {
 				method: 'PUT',
 				body: personnel
 			} ),
-			invalidatesTags: [ 'Personnel' ]
+			invalidatesTags: [ 'Personnels' ]
 		} ),
 		deletePersonnel: build.mutation<IPersonnel, IPersonnel>( {
 			query: ( personnel ) => ( {
 				url: `/personnels/${ personnel.id }`,
 				method: 'DELETE',
 			} ),
-			invalidatesTags: [ 'Personnel' ]
+			invalidatesTags: [ 'Personnels' ]
 		} )
 	} )
 } );
