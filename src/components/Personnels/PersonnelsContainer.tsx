@@ -6,7 +6,7 @@ import { personnelsAPI } from '../../services/PersonnelsService';
 import Skeleton from '../../exampl_box/_PersonnelsBlock/Skeleton';
 import PersonnelItem from './PersonnelItem';
 import CriticalError from '../СriticalЕrror';
-import PersonnellYear from './PersonnellYear';
+import PersonnellYear from './PersonnelYear';
 
 const PersonnelsContainer = () => {
   //const [ department, setDepartment ] = React.useState( 'all' );
