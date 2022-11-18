@@ -31,11 +31,13 @@ const Sort = () => {
   return (
     <fieldset>
       <legend>
-        <p></p>
-        <p>Сортировка</p>
-        <p onClick={() => dispatch(setModal(!modal))}>
-          <img src={cancel} alt="Cancel Icon" />
-        </p>
+        <div>
+          <p></p>
+          <p>Сортировка</p>
+          <p onClick={() => dispatch(setModal(!modal))}>
+            <img src={cancel} alt="Cancel Icon" />
+          </p>
+        </div>
       </legend>
 
       <ul role="none">
