@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { IPersonnel } from '../../models/IPersonnel';
 import PersonnelBithday from './PersonnelBithday';
@@ -29,12 +30,12 @@ const PersonnelItem: React.FC<PersonnelsPersonnelItemProps> = ({ personnel, remo
 
   React.useEffect(() => {
     handleUpdate(date);
-  }, [date]);
+  }, []);
 
   return (
     <>
       <li key={personnel.id}>
-        <div className="personnel-block-item-card">
+        <Link to={`${personnel.id}`} className="personnel-block-item-card">
           <figure>
             <img src={personnel.avatarUrl} alt="Avatar" />
           </figure>
@@ -47,7 +48,7 @@ const PersonnelItem: React.FC<PersonnelsPersonnelItemProps> = ({ personnel, remo
             </p>
             <p>{personnel.position}</p>
           </div>
-        </div>
+        </Link>
         <PersonnelBithday birthday={personnel.birthdayNext} />
       </li>
     </>

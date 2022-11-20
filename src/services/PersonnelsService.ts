@@ -13,7 +13,7 @@ export const personnelsAPI = createApi( {
 			query: ( department: string ) => ( {
 				url: '/personnels',
 				params: {
-					_department: department
+					q: department === 'all' ? '' : department
 				}
 			} ),
 			providesTags: [ 'Personnels' ]

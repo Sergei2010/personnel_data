@@ -1,4 +1,6 @@
 import React from 'react';
+import qs from 'qs';
+import { useNavigate } from 'react-router-dom';
 
 import { IPersonnel } from '../../models/IPersonnel';
 import { useAppSelector } from '../../hooks/redux';
@@ -9,8 +11,9 @@ import CriticalError from '../СriticalЕrror';
 import PersonnellYear from './PersonnelYear';
 
 const PersonnelsContainer = () => {
-  //const [ department, setDepartment ] = React.useState( 'all' );
+  const navigate = useNavigate();
   const department = useAppSelector((state) => state.filterReducer.department);
+  const sort = useAppSelector((state) => state.filterReducer.sort);
   const {
     data: personnels,
     error,
@@ -51,7 +54,16 @@ const PersonnelsContainer = () => {
     updatePersonnel(personnel);
   };
 
-  console.log('personnels:', personnels);
+  React.useEffect(() => {
+    const { sortProperty } = sort;
+    const queryString = qs.stringify({
+      department,
+      sortProperty,
+      //searchValue
+    });
+
+    navigate(`?${queryString}`);
+  }, [department, sort, /* searchValue, */ navigate]);
 
   return (
     <div className="wrapper">
