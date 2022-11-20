@@ -1,15 +1,15 @@
 import React from 'react';
-import { Routes, Router } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+
 import PersonnelsContainer from './components/Personnels/PersonnelsContainer';
 import PersonnelView from './components/Personnels/PersonnelView';
-
 import NavigationBar from './components/NavigationBar';
 import Modal from './components/Modal';
 import Sort from './components/Sort';
 
 import './scss/app.scss';
 
-function App() {
+const App = () => {
   return (
     <>
       <Modal>
@@ -17,11 +17,11 @@ function App() {
       </Modal>
       <NavigationBar />
       <Routes>
-        <Router path="/" element={<PersonnelsContainer />} />
-        <Router path="/view/:id?" element={<PersonnelView />} />
+        <Route path="personnels" element={<PersonnelsContainer />} />
+        <Route path="/personnels/:id" element={<PersonnelView />} />
       </Routes>
     </>
   );
-}
+};
 
 export default App;

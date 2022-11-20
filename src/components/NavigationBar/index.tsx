@@ -7,15 +7,15 @@ import { departmentLinksModified, returnKey, returnLink } from '../../utils/vari
 import SearchBlock from '../SearchBlock';
 
 const NavigationBar = () => {
-  let str: string | undefined = useAppSelector((state) => state.filterReducer.department);
+  let department: string | undefined = useAppSelector((state) => state.filterReducer.department);
   const dispatch = useAppDispatch();
 
-  str = returnLink(str);
+  department = returnLink(department);
 
-  const [activeIdMouseInter, setActiveIdMouseInter] = React.useState(str);
+  const [activeIdMouseInter, setActiveIdMouseInter] = React.useState(department);
   React.useEffect(() => {
-    setActiveIdMouseInter(str);
-  }, [str]);
+    setActiveIdMouseInter(department);
+  }, [department]);
   const [activeIdClick, setActiveIdClick] = React.useState('');
   const [clickEvent, setClickEvent] = React.useState(false);
 
@@ -43,8 +43,8 @@ const NavigationBar = () => {
     setActiveIdMouseInter('');
     let link = e.target ? (e.target as HTMLInputElement).textContent : '';
     setActiveIdClick(link ? link : '');
-    let str = returnKey(link ? link : '');
-    dispatch(setdepartment(str));
+    let department = returnKey(link ? link : '');
+    dispatch(setdepartment(department));
   };
 
   return (
@@ -66,7 +66,7 @@ const NavigationBar = () => {
                   }`}
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}>
-                  <Link to="/" onClick={handleClick}>
+                  <Link to={`?department=${department}`} onClick={handleClick}>
                     {link}
                   </Link>
                 </div>

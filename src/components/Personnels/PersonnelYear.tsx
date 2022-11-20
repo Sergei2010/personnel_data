@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PersonnellYear = () => {
+const PersonnelYear = () => {
   return (
     <div className="personnel-year-block">
       <div>
@@ -12,4 +12,4 @@ const PersonnellYear = () => {
   );
 };
 
-export default PersonnellYear;
+export default PersonnelYear;
