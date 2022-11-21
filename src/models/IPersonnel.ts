@@ -1,12 +1,12 @@
 export interface IPersonnel {
-	id: string | '';
-	avatarUrl: string | '';
-	firstName: string | '';
-	lastName: string | '';
-	userTag: string | '';
-	department: string | '';
-	position: string | '';
-	birthday: string | '';
-	phone: string | '';
-	birthdayNext: string | '';
+	id?: string | '';
+	avatarUrl?: string | '';
+	firstName?: string | '';
+	lastName?: string | '';
+	userTag?: string | '';
+	department?: string | '';
+	position?: string | '';
+	birthday?: string | '';
+	phone?: string | '';
+	birthdayNext?: string | '';
 }
