@@ -2,30 +2,39 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0px;
-  width: 1280px;
+  padding-left: 18px;
+  padding-top: 28px;
   height: 280px;
   background: $background;
+  height: 100%;
 }
 
-.main-view p:nth-child(1) {
+.view-main li:nth-child(1) {
   display: flex;
-  margin-left: 0;
-  max-width: 100%;
-  width: 100%;
-  flex: 1;
+  padding-left: 14px;
+  align-self: start;
+}
+
+.view-main li:nth-child(1) img {
   width: 7px;
   height: 11px;
-  justify-self: flex-start;
 }
 
-.main-view p:nth-child(2) {
+.view-main li:nth-child(2) {
+  padding-top: 31px;
+}
+
+.view-main li:nth-child(2) img {
   width: 104px;
   height: 104px;
-  border-radius: 64px;
+  border-radius: 50%;
 }
 
-.main-view p:nth-child(3) {
+.view-main li:nth-child(3) {
+  padding-top: 24px;
+}
+
+.view-main li:nth-child(3) b {
   width: 183px;
   height: 28px;
   font-family: 'Inter';
@@ -37,21 +46,21 @@
   color: $black;
 }
 
-.main-view p:nth-child(4) {
-  width: 14px;
-  height: 22px;
+.view-main li:nth-child(3) span {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 17px;
   line-height: 22px;
-  display: flex;
-  align-items: center;
-  text-align: center;
+  margin-left: 4px;
   color: $grey;
 }
 
-.main-view p:nth-child(5) {
+.view-main li:nth-child(4) {
+  padding-top: 12px;
+}
+
+.view-main li:nth-child(4) span {
   width: 55px;
   height: 16px;
   font-family: 'Inter';
@@ -61,4 +70,46 @@
   line-height: 16px;
   text-align: center;
   color: #55555c;
+}
+
+.view-main li:nth-child(5) {
+  width: 375px;
+  height: 24px;
+  background: #f7f7f8;
+}
+
+.view-birthday,
+.view-phone {
+  background: #ffffff;
+  display: flex;
+  padding: 27px 18px;
+}
+
+.view-birthday p,
+.view-phone p {
+  display: flex;
+  align-items: center;
+  margin-right: 14px;
+}
+
+.view-birthday img,
+.view-phone img {
+  width: 20px;
+  height: 20px;
+}
+
+.view-birthday p:nth-child(2) {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.view-birthday p span,
+.view-phone p:nth-child(2) {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: $black;
 }

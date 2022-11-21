@@ -12,7 +12,8 @@ interface PersonnelsPersonnelItemProps {
 }
 
 const PersonnelItem: React.FC<PersonnelsPersonnelItemProps> = ({ personnel, remove, update }) => {
-  const date = getBirthdayStr(personnel.birthday);
+  const [data, setData] = React.useState(personnel);
+  const date = getBirthdayStr(personnel.birthday!);
   //console.log('date', date);
   const handleRemove = (event: React.MouseEvent) => {
     event.stopPropagation();
@@ -35,7 +36,7 @@ const PersonnelItem: React.FC<PersonnelsPersonnelItemProps> = ({ personnel, remo
   return (
     <>
       <li key={personnel.id}>
-        <Link to={`${personnel.id}`} className="personnel-block-item-card">
+        <Link to={`${personnel.id}`} state={{ data: data }} className="personnel-block-item-card">
           <figure>
             <img src={personnel.avatarUrl} alt="Avatar" />
           </figure>
@@ -49,7 +50,7 @@ const PersonnelItem: React.FC<PersonnelsPersonnelItemProps> = ({ personnel, remo
             <p>{personnel.position}</p>
           </div>
         </Link>
-        <PersonnelBithday birthday={personnel.birthdayNext} />
+        <PersonnelBithday birthday={personnel.birthdayNext!} />
       </li>
     </>
   );
