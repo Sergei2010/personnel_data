@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import filter from '../../store/reducers/FilterSlice';
 import personnels from './personnelsSlice';
-import code from '../../redux/slices/codeSlice';
-import modal from '../../redux/slices/modalSlice';
+import code from '../__redux/slices/codeSlice';
+import modal from '../__redux/slices/modalSlice';
 
 export const store = configureStore({
   reducer: {

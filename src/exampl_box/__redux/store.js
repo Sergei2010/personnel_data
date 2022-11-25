@@ -1,7 +1,7 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
 import { personnelsApi } from './API/personnelsApi';
-import filter from '../store/reducers/FilterSlice';
+import filter from '../../store/reducers/FilterSlice';
 import code from './slices/codeSlice';
 import modal from './slices/modalSlice';
 
