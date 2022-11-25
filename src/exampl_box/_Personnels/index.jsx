@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { useGetPersonnelsQuery } from '../../redux/API/personnelsApi';
+import { useGetPersonnelsQuery } from '../__redux/API/personnelsApi';
 
 const Personnels = () => {
 

@@ -1,0 +1,14 @@
+@import '../variables';
+
+.personnels-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 16px;
+  gap: 12px;
+}
+
+.personnels-block ul {
+  width: 100%;
+}

@@ -35,23 +35,25 @@ const PersonnelItem: React.FC<PersonnelsPersonnelItemProps> = ({ personnel, remo
 
   return (
     <>
-      <li key={personnel.id}>
-        <Link to={`${personnel.id}`} state={{ data: data }} className="personnel-block-item-card">
-          <figure>
-            <img src={personnel.avatarUrl} alt="Avatar" />
-          </figure>
+      <Link to={`${personnel.id}`} state={{ data: data }} className="personnel-block">
+        <li key={personnel.id}>
           <div>
-            <p>
-              <span>
-                {personnel.firstName} {personnel.lastName}
-              </span>
-              <span> {personnel.userTag}</span>
-            </p>
-            <p>{personnel.position}</p>
+            <figure>
+              <img src={personnel.avatarUrl} alt="Avatar" />
+            </figure>
+            <div>
+              <p>
+                <span>
+                  {personnel.firstName} {personnel.lastName}
+                </span>
+                <span> {personnel.userTag}</span>
+              </p>
+              <p>{personnel.position}</p>
+            </div>
           </div>
-        </Link>
-        <PersonnelBithday birthday={personnel.birthdayNext!} />
-      </li>
+          <PersonnelBithday birthday={personnel.birthdayNext!} />
+        </li>
+      </Link>
     </>
   );
 };

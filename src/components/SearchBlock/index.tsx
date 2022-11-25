@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppSelector, useAppDispatch } from '../../hooks/redux';
-import { setModal } from '../../redux/slices/modalSlice';
+import { setModal } from '../../exampl_box/__redux/slices/modalSlice';
 //import debounce from 'lodash.debounce';
 import search from '../../assets/search.svg';
 import listIcon from '../../assets/list-ui-alt.svg';

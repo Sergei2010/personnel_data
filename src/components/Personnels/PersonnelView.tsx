@@ -1,23 +1,34 @@
 import React from 'react';
 import { DateTime } from 'luxon';
+import { Link } from 'react-router-dom';
 
 import vector from '../../assets/vector.svg';
 import star from '../../assets/star.svg';
 import phone from '../../assets/phone.svg';
 import { IPersonnel } from '../../models/IPersonnel';
+import { text } from '../../utils/transformFunctions';
 
 const PersonnelView = (props: IPersonnel) => {
   const dt = (t: string) => DateTime.fromISO(t);
   const birthday = props.birthday ? dt(props.birthday).setLocale('ru').toFormat('d LLL') : null;
   const yearNow = DateTime.local().year;
   const yearBirthday = props.birthday ? dt(props.birthday).year : null;
-  const yearOld = yearBirthday ? yearNow - yearBirthday : 'no data available';
+  const yearOld = yearBirthday ? yearNow - yearBirthday : 'No data available ...';
+  const str = (year: number | string) => {
+    if (typeof year === 'number') {
+      return text(year);
+    } else {
+      return <b>No data available ...</b>;
+    }
+  };
 
   return (
     <div className="wrapper">
       <ul className="view-main">
         <li>
-          <img src={vector} alt="Vector" />
+          <Link to="/personnels">
+            <img src={vector} alt="Vector" />
+          </Link>
         </li>
         <li>
           <img src={props.avatarUrl} alt="Alisa" />
@@ -39,7 +50,11 @@ const PersonnelView = (props: IPersonnel) => {
         </p>
         <p>
           <span>{birthday}</span>
-          <span>{yearOld} года</span>
+          <span>
+            <>
+              {yearOld} {str(yearOld)}
+            </>
+          </span>
         </p>
       </div>
       <div className="view-phone">

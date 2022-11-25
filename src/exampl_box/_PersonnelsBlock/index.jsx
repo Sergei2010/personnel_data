@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import qs from 'qs';
 import { useNavigate } from 'react-router-dom';
 
-import { useGetPersonnelsQuery } from '../../redux/API/personnelsApi';
+import { useGetPersonnelsQuery } from '../__redux/API/personnelsApi';
 import Skeleton from './Skeleton';
 import Personnels from '../_Personnels';
 import CriticalError from '../../components/СriticalЕrror';
