@@ -9,13 +9,26 @@ export const personnelsAPI = createApi( {
 		baseUrl: 'http://localhost:5000'
 	} ),
 	endpoints: ( build ) => ( {
-		fetchAllPersonnels: build.query<IPersonnel[], string>( {
-			query: ( department: string ) => ( {
-				url: '/personnels',
-				params: {
-					q: department === 'all' ? '' : department
+		fetchAllPersonnels: build.query<IPersonnel[], { department: string, sortProperty: string; }>( {
+			query: ( { department, sortProperty } ) => {
+				if ( department === 'all' ) {
+					return ( {
+						url: '/personnels',
+						params: {
+							q: '',
+							_sort: sortProperty,
+						}
+					} );
+				} else {
+					return ( {
+						url: '/personnels',
+						params: {
+							department,
+							_sort: sortProperty,
+						}
+					} );
 				}
-			} ),
+			},
 			providesTags: [ 'Personnels' ]
 		} ),
 		createPersonnel: build.mutation<IPersonnel, IPersonnel>( {

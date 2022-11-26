@@ -13,12 +13,13 @@ import PersonnellYear from './PersonnelYear';
 const PersonnelsContainer = () => {
   const navigate = useNavigate();
   const department = useAppSelector((state) => state.filterReducer.department);
-  const sort = useAppSelector((state) => state.filterReducer.sort);
+  let { sortProperty } = useAppSelector((state) => state.filterReducer.sort);
+  sortProperty = sortProperty === 'lastName' ? 'lastName' : 'birthdayNext';
   const {
     data: personnels,
     error,
     isLoading,
-  } = personnelsAPI.useFetchAllPersonnelsQuery(department);
+  } = personnelsAPI.useFetchAllPersonnelsQuery({ department, sortProperty });
 
   const [createPersonnel, { error: createError, isLoading: isCreateLoading }] =
     personnelsAPI.useCreatePersonnelMutation();
@@ -54,16 +55,34 @@ const PersonnelsContainer = () => {
     updatePersonnel(personnel);
   };
 
-  React.useEffect(() => {
-    const { sortProperty } = sort;
+  /* React.useEffect(() => {
     const queryString = qs.stringify({
-      department,
-      sortProperty,
+      q: department === 'all' ? '' : department,
+      department: department !== 'all' ? department : '',
+      _sort: sortProperty,
       //searchValue
     });
 
     navigate(`?${queryString}`);
-  }, [department, sort, /* searchValue, */ navigate]);
+  }, [department, sortProperty, searchValue, navigate]); */
+
+  React.useEffect(() => {
+    let queryString;
+    if (department === 'all') {
+      queryString = qs.stringify({
+        q: '',
+        _sort: sortProperty,
+        //searchValue
+      });
+    } else {
+      queryString = qs.stringify({
+        department,
+        _sort: sortProperty,
+        //searchValue
+      });
+    }
+    navigate(`?${queryString}`);
+  }, [department, sortProperty, /* searchValue, */ navigate]);
 
   return (
     <div className="wrapper">
