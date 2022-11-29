@@ -10,7 +10,6 @@ const PersonnelBithday = ({ birthday }: IBirthday) => {
   const sortProperty = sort.sortProperty;
 
   const dt = DateTime.fromISO(birthday).setLocale('ru').toFormat('d LLL');
-  //console.log('dt: ', dt);
 
   return <div className="personnel-block-birthday">{sortProperty === 'birthday' && dt}</div>;
 };

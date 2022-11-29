@@ -1,5 +1,9 @@
 @import '../variables';
 
+a[href$='aaa'] {
+  display: none;
+}
+
 .personnel-block li {
   display: flex;
   align-items: center;

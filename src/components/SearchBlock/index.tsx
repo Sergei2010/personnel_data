@@ -1,8 +1,6 @@
 import React from 'react';
 import { useAppSelector, useAppDispatch } from '../../hooks/redux';
 import { setModal } from '../../exampl_box/__redux/slices/modalSlice';
-//import debounce from 'lodash.debounce';
-import search from '../../assets/search.svg';
 import listIcon from '../../assets/list-ui-alt.svg';
 import SearchItem from './SearchItem';
 
@@ -12,13 +10,7 @@ const SearchBlock = () => {
 
   return (
     <div className="search">
-      <div className="search-content-left">
-        <p>
-          <img src={search} alt="Search" />
-        </p>
-
-        <SearchItem />
-      </div>
+      <SearchItem />
       <div className="search-content-right">
         <img
           onClick={(e: React.MouseEvent) => {

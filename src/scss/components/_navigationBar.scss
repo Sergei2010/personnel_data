@@ -70,15 +70,6 @@
   align-items: center;
 }
 
-/* .nav ul li {
-  line-height: 20px;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 15px;
-  text-align: center;
-} */
-
 .nav-div {
   font-family: 'Inter';
   font-style: normal;
@@ -94,15 +85,6 @@
   background-size: 0% 2px;
   transition: background-size 0.3s ease;
 }
-
-/* .nav ul li:first-child div {
-  background-size: 100% 2px;
-}
-
-.nav ul li div:hover,
-div:focus {
-  background-size: 100% 2px;
-} */
 
 .nav-div-noactive {
   background-size: 0% 2px;
