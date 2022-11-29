@@ -40,9 +40,9 @@
       "userTag": "jd",
       "department": "android",
       "position": "developer",
-      "birthday": "1973-01-24",
+      "birthday": "1973-12-24",
       "phone": "+79001234567",
-      "birthdayNext": "2023-01-24T01:00:00.000Z"
+      "birthdayNext": "2022-12-24T01:00:00.000Z"
     },
     {
       "id": "497f6eca-6276-4993-bfeb-53gasfaf08",
@@ -112,9 +112,9 @@
       "userTag": "dm",
       "department": "frontend",
       "position": "developer",
-      "birthday": "1990-01-21",
+      "birthday": "1990-12-04",
       "phone": "+79001234517",
-      "birthdayNext": "2023-01-21T00:00:00.000Z"
+      "birthdayNext": "2022-12-04T00:00:00.000Z"
     },
     {
       "id": "497f6eca-6276-4993-bfeb-53cbbbbssaga6f08",

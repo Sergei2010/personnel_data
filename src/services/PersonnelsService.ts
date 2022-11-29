@@ -6,25 +6,29 @@ export const personnelsAPI = createApi( {
 	reducerPath: 'personnelsAPI',
 	tagTypes: [ 'Personnels' ],
 	baseQuery: fetchBaseQuery( {
-		baseUrl: 'http://localhost:5000'
+		baseUrl: 'http://localhost:5000/personnels'
 	} ),
 	endpoints: ( build ) => ( {
-		fetchAllPersonnels: build.query<IPersonnel[], { department: string, sortProperty: string; }>( {
-			query: ( { department, sortProperty } ) => {
+		fetchAllPersonnels: build.query<IPersonnel[], { department: string, sortProperty: string, searchValue: string; }>( {
+			query: ( { department, sortProperty, searchValue } ) => {
 				if ( department === 'all' ) {
 					return ( {
-						url: '/personnels',
+						url: '/',
 						params: {
-							q: '',
+							//q:'',
+							q: searchValue,
 							_sort: sortProperty,
+							//fetchBaseQuery: searchValue,
 						}
 					} );
 				} else {
 					return ( {
-						url: '/personnels',
+						url: '/',
 						params: {
 							department,
 							_sort: sortProperty,
+							//_search: searchValue,
+							q: searchValue
 						}
 					} );
 				}
@@ -33,7 +37,7 @@ export const personnelsAPI = createApi( {
 		} ),
 		createPersonnel: build.mutation<IPersonnel, IPersonnel>( {
 			query: ( personnel ) => ( {
-				url: `/personnels/${ personnel.id }`,
+				url: `/${ personnel.id }`,
 				method: 'POST',
 				body: personnel
 			} ),
@@ -41,7 +45,7 @@ export const personnelsAPI = createApi( {
 		} ),
 		updatePersonnel: build.mutation<IPersonnel, IPersonnel>( {
 			query: ( personnel ) => ( {
-				url: `/personnels/${ personnel.id }`,
+				url: `/${ personnel.id }`,
 				method: 'PUT',
 				body: personnel
 			} ),
@@ -49,7 +53,7 @@ export const personnelsAPI = createApi( {
 		} ),
 		deletePersonnel: build.mutation<IPersonnel, IPersonnel>( {
 			query: ( personnel ) => ( {
-				url: `/personnels/${ personnel.id }`,
+				url: `/${ personnel.id }`,
 				method: 'DELETE',
 			} ),
 			invalidatesTags: [ 'Personnels' ]

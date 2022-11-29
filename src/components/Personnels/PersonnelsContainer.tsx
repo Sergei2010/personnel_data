@@ -1,6 +1,7 @@
 import React from 'react';
 import qs from 'qs';
 import { useNavigate } from 'react-router-dom';
+import { sortBy } from 'better-cmp/lib/extra';
 
 import { IPersonnel } from '../../models/IPersonnel';
 import { useAppSelector } from '../../hooks/redux';
@@ -9,17 +10,27 @@ import Skeleton from '../../exampl_box/_PersonnelsBlock/Skeleton';
 import PersonnelItem from './PersonnelItem';
 import CriticalError from '../СriticalЕrror';
 import PersonnellYear from './PersonnelYear';
+import { zeroPersonnel } from '../../components/ZeroPersonnel';
 
 const PersonnelsContainer = () => {
   const navigate = useNavigate();
   const department = useAppSelector((state) => state.filterReducer.department);
+  const searchValue = useAppSelector((state) => state.filterReducer.searchValue);
   let { sortProperty } = useAppSelector((state) => state.filterReducer.sort);
   sortProperty = sortProperty === 'lastName' ? 'lastName' : 'birthdayNext';
   const {
     data: personnels,
     error,
     isLoading,
-  } = personnelsAPI.useFetchAllPersonnelsQuery({ department, sortProperty });
+  } = personnelsAPI.useFetchAllPersonnelsQuery({ department, sortProperty, searchValue });
+  let personnelsWithZeroPersonnel;
+  if (personnels && sortProperty === 'lastName') {
+    personnelsWithZeroPersonnel = personnels;
+  } else if (personnels && sortProperty === 'birthdayNext') {
+    personnelsWithZeroPersonnel = sortBy(personnels.concat(zeroPersonnel), (personnel) => [
+      personnel.birthdayNext!,
+    ]);
+  }
 
   const [createPersonnel, { error: createError, isLoading: isCreateLoading }] =
     personnelsAPI.useCreatePersonnelMutation();
@@ -55,34 +66,25 @@ const PersonnelsContainer = () => {
     updatePersonnel(personnel);
   };
 
-  /* React.useEffect(() => {
-    const queryString = qs.stringify({
-      q: department === 'all' ? '' : department,
-      department: department !== 'all' ? department : '',
-      _sort: sortProperty,
-      //searchValue
-    });
-
-    navigate(`?${queryString}`);
-  }, [department, sortProperty, searchValue, navigate]); */
-
   React.useEffect(() => {
     let queryString;
     if (department === 'all') {
       queryString = qs.stringify({
-        q: '',
+        //q: '',
+        q: searchValue,
         _sort: sortProperty,
-        //searchValue
+        //_search: searchValue,
       });
     } else {
       queryString = qs.stringify({
         department,
         _sort: sortProperty,
-        //searchValue
+        //_search: searchValue,
+        q: searchValue,
       });
     }
     navigate(`?${queryString}`);
-  }, [department, sortProperty, /* searchValue, */ navigate]);
+  }, [department, sortProperty, searchValue, navigate]);
 
   return (
     <div className="wrapper">
@@ -97,15 +99,19 @@ const PersonnelsContainer = () => {
         {
           /* !code && */ !isLoading && (
             <ul>
-              <PersonnellYear />
-              {personnels &&
-                personnels.map((personnel: IPersonnel) => (
-                  <PersonnelItem
-                    remove={handleRemove}
-                    update={handleUpdate}
-                    personnel={personnel}
-                    key={personnel.id}
-                  />
+              {personnelsWithZeroPersonnel &&
+                personnelsWithZeroPersonnel.map((personnel: IPersonnel) => (
+                  <div key={personnel.id}>
+                    <PersonnellYear
+                      birthdayNext={personnel.birthdayNext}
+                      firstName={personnel.firstName}
+                    />
+                    <PersonnelItem
+                      remove={handleRemove}
+                      update={handleUpdate}
+                      personnel={personnel}
+                    />
+                  </div>
                 ))}
             </ul>
           )

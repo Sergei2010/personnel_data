@@ -1,3 +1,7 @@
+div.personnel-year-block:not([data-name='zeroPersonnel']) {
+  display: none;
+}
+
 .personnel-year-block {
   display: flex;
   flex-direction: column;
