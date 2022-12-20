@@ -1,0 +1,31 @@
+.no-personnel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-personnel-img {
+  width: 56px;
+  height: 56px;
+}
+
+.no-personnel-title {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 22px;
+  text-align: center;
+  color: #050510;
+}
+
+.no-personnel-subtitle {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #97979b;
+}

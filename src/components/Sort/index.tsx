@@ -12,7 +12,7 @@ const Sort = () => {
   const modal = useAppSelector((state) => state.modalReducer.modal);
   const sort = useAppSelector((state) => state.filterReducer.sort);
 
-  function changeValue(event: { target: { name: any; value: any } }) {
+  function changeValue(event: { target: { name: string; value: string } }) {
     let n = event.target.name;
     let v = event.target.value;
     dispatch(setSort({ name: n, sortProperty: v }));

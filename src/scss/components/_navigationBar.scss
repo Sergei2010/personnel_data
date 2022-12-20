@@ -44,6 +44,7 @@
   height: 40px;
   border: 0;
   background: transparent;
+  transition: background 0.4s ease;
 }
 
 .search input::placeholder {
@@ -55,6 +56,22 @@
   display: flex;
   align-items: center;
   color: #c3c3c6;
+}
+
+.search input:focus::placeholder {
+  color: #e5e5e5;
+}
+
+.search-active {
+  background: #e5e5e5;
+  border-radius: 15px;
+  transition: background 0.4s ease;
+}
+
+.search-not-active {
+  background: transporent;
+
+  transition: background 0.7s ease;
 }
 
 .nav {
