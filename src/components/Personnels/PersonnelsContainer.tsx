@@ -23,6 +23,7 @@ const PersonnelsContainer = () => {
     error,
     isLoading,
   } = personnelsAPI.useFetchAllPersonnelsQuery({ department, sortProperty, searchValue });
+  // ZeroPersonnell is mounted for line with NextYear
   let personnelsWithZeroPersonnel;
   if (personnels && sortProperty === 'lastName') {
     personnelsWithZeroPersonnel = personnels;

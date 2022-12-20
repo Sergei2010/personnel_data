@@ -1,11 +1,13 @@
-import React, { ChangeEventHandler } from 'react';
+import React, { ReactEventHandler } from 'react';
 import debounce from 'lodash.debounce';
 
 import { useAppDispatch } from '../../hooks/redux';
 import { setSearchValue } from '../../store/reducers/FilterSlice';
 import search from '../../assets/search.svg';
+import { IdentityFn } from '../../models/IdentityFn';
 
-const SearchItem = () => {
+const SearchItem = ({ identity }: IdentityFn) => {
+  const [isFocus, setFocus] = React.useState(false);
   const dispatch = useAppDispatch();
   const [value, setValue] = React.useState('');
   const inputRef = React.useRef<any>();
@@ -16,16 +18,28 @@ const SearchItem = () => {
     inputRef.current.focus();
   };
 
+  // вернёт ф-ию 1раз без пересоздания
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const updateSearchValue = React.useCallback(
     debounce((str) => {
       dispatch(setSearchValue(str));
-    }, 150),
+    }, 250),
     [],
   );
 
-  const onChangeInput = (event: any) => {
-    setValue(event.target.value);
-    updateSearchValue(event.target.value);
+  const onChangeInput: ReactEventHandler<HTMLInputElement> = (event) => {
+    event.preventDefault();
+    const { target } = event;
+    if (target) {
+      const value = (target as HTMLInputElement).value;
+      setValue(value);
+      updateSearchValue(value);
+    }
+  };
+
+  const handlerFocus = () => {
+    setFocus(!isFocus);
+    identity(!isFocus);
   };
 
   return (
@@ -39,6 +53,8 @@ const SearchItem = () => {
         type="text"
         placeholder="Введите имя, тег, почту ..."
         onChange={onChangeInput}
+        onFocus={handlerFocus}
+        onBlur={handlerFocus}
       />
     </div>
   );
