@@ -15,10 +15,8 @@ export const personnelsAPI = createApi( {
 					return ( {
 						url: '/',
 						params: {
-							//q:'',
 							q: searchValue,
 							_sort: sortProperty,
-							//fetchBaseQuery: searchValue,
 						}
 					} );
 				} else {
@@ -27,12 +25,18 @@ export const personnelsAPI = createApi( {
 						params: {
 							department,
 							_sort: sortProperty,
-							//_search: searchValue,
 							q: searchValue
 						}
 					} );
 				}
 			},
+			providesTags: [ 'Personnels' ]
+		} ),
+		fetchPersonnel: build.query<IPersonnel, IPersonnel>( {
+			query: ( { id } ) => ( {
+				url: `/${ id }`,
+				method: 'GET'
+			} ),
 			providesTags: [ 'Personnels' ]
 		} ),
 		createPersonnel: build.mutation<IPersonnel, IPersonnel>( {

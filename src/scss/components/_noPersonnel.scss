@@ -1,4 +1,5 @@
 .no-personnel {
+  height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,6 +9,10 @@
 .no-personnel-img {
   width: 56px;
   height: 56px;
+  background-image: url('../../assets/left-pointing-magnifying-glass.svg');
+  background-position: cover;
+  background-repeat: no-repeat;
+  margin-bottom: 1em;
 }
 
 .no-personnel-title {
@@ -18,6 +23,7 @@
   line-height: 22px;
   text-align: center;
   color: #050510;
+  margin-bottom: 1em;
 }
 
 .no-personnel-subtitle {

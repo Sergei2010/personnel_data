@@ -11,6 +11,7 @@ import PersonnelItem from './PersonnelItem';
 import CriticalError from '../СriticalЕrror';
 import PersonnellYear from './PersonnelYear';
 import { zeroPersonnel } from '../../components/ZeroPersonnel';
+import NoPersonnel from '../NoPersonnel';
 
 const PersonnelsContainer = () => {
   const navigate = useNavigate();
@@ -18,19 +19,21 @@ const PersonnelsContainer = () => {
   const searchValue = useAppSelector((state) => state.filterReducer.searchValue);
   let { sortProperty } = useAppSelector((state) => state.filterReducer.sort);
   sortProperty = sortProperty === 'lastName' ? 'lastName' : 'birthdayNext';
+
   const {
     data: personnels,
     error,
     isLoading,
   } = personnelsAPI.useFetchAllPersonnelsQuery({ department, sortProperty, searchValue });
+
   // ZeroPersonnell is mounted for line with NextYear
-  let personnelsWithZeroPersonnel;
-  if (personnels && sortProperty === 'lastName') {
-    personnelsWithZeroPersonnel = personnels;
-  } else if (personnels && sortProperty === 'birthdayNext') {
-    personnelsWithZeroPersonnel = sortBy(personnels.concat(zeroPersonnel), (personnel) => [
-      personnel.birthdayNext!,
-    ]);
+  let personnelsWithZeroPersonnel: IPersonnel[];
+  if (personnels) {
+    sortProperty === 'lastName'
+      ? (personnelsWithZeroPersonnel = personnels)
+      : (personnelsWithZeroPersonnel = sortBy(personnels.concat(zeroPersonnel), (personnel) => [
+          personnel.birthdayNext!,
+        ]));
   }
 
   const [createPersonnel, { error: createError, isLoading: isCreateLoading }] =
@@ -71,16 +74,13 @@ const PersonnelsContainer = () => {
     let queryString;
     if (department === 'all') {
       queryString = qs.stringify({
-        //q: '',
         q: searchValue,
         _sort: sortProperty,
-        //_search: searchValue,
       });
     } else {
       queryString = qs.stringify({
         department,
         _sort: sortProperty,
-        //_search: searchValue,
         q: searchValue,
       });
     }
@@ -100,8 +100,8 @@ const PersonnelsContainer = () => {
         {
           /* !code && */ !isLoading && (
             <ul>
-              {personnelsWithZeroPersonnel &&
-                personnelsWithZeroPersonnel.map((personnel: IPersonnel) => (
+              {personnels &&
+                personnelsWithZeroPersonnel!.map((personnel: IPersonnel) => (
                   <div key={personnel.id}>
                     <PersonnellYear
                       birthdayNext={personnel.birthdayNext}
@@ -114,6 +114,7 @@ const PersonnelsContainer = () => {
                     />
                   </div>
                 ))}
+              {personnels && personnels.length === 0 && <NoPersonnel />}
             </ul>
           )
         }
