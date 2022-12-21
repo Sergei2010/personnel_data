@@ -24,12 +24,15 @@ const PersonnelView = (props: IPersonnel) => {
 
   return (
     <div className="wrapper">
+      <div className="view-btn">
+        <Link to="/personnels">
+          <img src={vector} alt="Vector" />
+        </Link>
+        <Link to={`/personnels/${props.id}/edit`}>
+          <p>Редактировать</p>
+        </Link>
+      </div>
       <ul className="view-main">
-        <li>
-          <Link to="/personnels">
-            <img src={vector} alt="Vector" />
-          </Link>
-        </li>
         <li>
           <img src={props.avatarUrl} alt="Alisa" />
         </li>

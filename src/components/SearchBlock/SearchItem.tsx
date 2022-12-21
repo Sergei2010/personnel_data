@@ -21,7 +21,7 @@ const SearchItem = ({ identity }: IdentityFn) => {
   // вернёт ф-ию 1раз без пересоздания
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const updateSearchValue = React.useCallback(
-    debounce((str) => {
+    debounce((str: string) => {
       dispatch(setSearchValue(str));
     }, 250),
     [],
