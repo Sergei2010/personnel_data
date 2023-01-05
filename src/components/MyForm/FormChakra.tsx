@@ -41,7 +41,7 @@ const FormChakra = (props: string[]) => (
         React Final Form
       </Heading>
       <Heading as="h2" size="l" textAlign="center" m={5}>
-        Chakra Example
+        Chakra
       </Heading>
       <Box as="p" textAlign="center">
         Example using React Final Form and{' '}
